@@ -23,14 +23,20 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	
+	<!-- repositories : 사설 저장소를 등록할 떄 필요함 -->
+	<!-- id, url -->
+	<repositories>
+		<repository>
+			<id>Atlassian</id>
+			<url>https://maven.artifacts.atlassian.com/</url>
+		</repository>	
+	</repositories>
+	
+	
+	
 	<!-- dependencies : 다운받고자하는 라이브러리 -->
 	<dependencies>
-		<!-- Spring -->
-		<dependency>
-    		<groupId>javax.servlet</groupId>
-    		<artifactId>jstl</artifactId>
-    		<version>1.2</version>
-		</dependency>
+		<!-- Spring -->		
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-context</artifactId>
@@ -123,7 +129,7 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>jstl</artifactId>
 			<version>1.2</version>
-		</dependency>
+		</dependency>	
 	
 		<!-- Test -->
 		<dependency>
@@ -131,7 +137,50 @@
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
 			<scope>test</scope>
-		</dependency>        
+		</dependency>
+		
+		<!--MVNRepository에서 라이브러리 다운 : usages 많은순-->
+		<!--1.DB 관련 (Oracle, myBatis) 연결 라이브러리 -->
+		
+		<!--1_1.ojdbc6 라이브러리 : 사설저장소라 repositories에 추가구문 작성 -->		
+		<dependency>
+    	<groupId>com.oracle</groupId>
+    	<artifactId>ojdbc6</artifactId>
+    	<version>11.2.0.4.0-atlassian-hosted</version>
+		</dependency>
+		
+		<!--1_2.Spring JDBC 라이브러리 : 스프링에서 jdbc 사용하기 위한 라이브러리 -->
+		<!-- central이 있는경우 기본저장소에 있는거라 repositories 작성안해도됨. -->
+		<dependency>
+    	<groupId>org.springframework</groupId>
+    	<artifactId>spring-jdbc</artifactId>
+    	<version>${org.springframework-version}</version>
+		</dependency>		
+		
+		<!--1_3.순수 myBatis 라이브러리  -->
+		<!-- central이 있는경우 기본저장소에 있는거라 repositories 작성안해도됨. -->
+		<dependency>
+    	<groupId>org.mybatis</groupId>
+    	<artifactId>mybatis</artifactId>
+    	<version>3.5.19</version>
+		</dependency>
+		
+		<!--1_4.MyBatis Spring 라이브러리 : Spring에서 myBatis 사용하기위한 라이브러리   -->
+		<!-- central이 있는경우 기본저장소에 있는거라 repositories 작성안해도됨. -->
+		<dependency>
+    	<groupId>org.mybatis</groupId>
+    	<artifactId>mybatis-spring</artifactId>
+    	<version>2.0.6</version>
+		</dependency>		        
+		
+		<!--1_5.commons DBCP 라이브러리 : Connection Pool 사용하기위한 라이브러리  -->
+		<!-- central이 있는경우 기본저장소에 있는거라 repositories 작성안해도됨. -->
+		<dependency>
+    	<groupId>commons-dbcp</groupId>
+    	<artifactId>commons-dbcp</artifactId>
+    	<version>1.4</version>
+		</dependency>
+		
 	</dependencies>
 	
 	

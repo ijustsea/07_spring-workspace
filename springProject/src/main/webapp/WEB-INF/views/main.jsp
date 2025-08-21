@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	여기는 인덱스
-	<jsp:forward page="WEB-INF/views/main.jsp"/>
+	<jsp:include page="메뉴바"/>
+	<jsp:include page="푸터바"/>
 </body>
 </html>
