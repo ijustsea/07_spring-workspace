@@ -1,9 +1,11 @@
 package com.kh.spring.member.controller;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -92,18 +94,30 @@ public class MemberController {
 	 * 
 	 * 반드시 jsp name값과 담고자하는 vo 필드명이 동일시키는것이 사용법이다.
 	 */
+	
+	/*
+	 * 요청처리후 응답페이지로 포워딩 또는 url재요청 
+	 * 1.스프링에서 제공하는 Model 객체 사용하기
+	 *   포워딩할 뷰로 전달하고하는 데이터를 맵형식(k-v)담을수 있는 영역
+	 *   Model 객체는 requestScope다.
+	 *   단. setAttribute 아닌 addAttribute 메소드 써야함.
+	 */
+	
+	
 	@RequestMapping("login.me")
-	public String loginMember(Member m) {
+	public String loginMember(Member m, Model model, HttpSession session) {
 		Member loginUser = mService.loginMember(m);
-		
-		if(loginUser==null) {//에러페이지
-			System.out.println("로그인실패");
-		}else {//성공
-			System.out.println("로그인성공");
 			
+		if(loginUser==null) {//에러페이지
+			model.addAttribute("errorMsg","로그인실패");
+			return "common/errorPage";
+		}else {//성공
+			
+			session.setAttribute("loginUser", loginUser);
+			return "redirect:/";
 		}
 		
-		return "main";
+		
 	}
 	
 }
