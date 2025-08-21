@@ -22,7 +22,34 @@
 	</beans:bean>
 	
 	<context:component-scan base-package="com.kh.spring" />
+	<!--
+		*사용자가 어떤 url로 요청시 이 문서가 읽혀짐
+		 HandlerMapping 통해서 어떤 url로 요청시 어떤 conntorlller구동시킬지 정해야함. 
+		 => 
+		
+		1.요청할때마다 실행할 controller 클래스들이 스프링의 관리대상으로 지정되어야함.
+		2. 어떤 url로 요청시 어떤 controller 구동시킬건지 매핑시키는 handlerMapping  관련한 클래스 
+		1번)
+		<bean class="com.kh.spring.member.controller.MemberController"/>
+		<bean class=com.kh.spring.board.controller.BoardController"/>
+		
+	    2번)
+          <beans:bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+              <beans:property name="mappings">
+                  <beans:props>
+                      <beans:prop key="insert.me">MemberController</beans:prop>
+                      <beans:prop key="list.bo">BoardController</beans:prop>
+                  </beans:props>
+              </beans:property>
+          </beans:bean>
+	  -->
 	
+	
+	<!-- 
+		위의 방식이 xml방식
+		장점 : xml 문서 한눈에 볼수있고 관리 편함.
+		단점 : 복잡함 / 여러개발자가 xml 수정하면 충돌남
+	 -->
 	
 	
 </beans:beans>
