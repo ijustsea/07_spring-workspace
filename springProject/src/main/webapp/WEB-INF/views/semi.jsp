@@ -539,6 +539,7 @@
                         <input type="checkbox" id="rememberMe" name="rememberMe">
                         <label for="rememberMe">로그인 상태 유지</label>
                     </div>
+                    <a href="#" class="forgot-password">아이디 찾기</a>
                     <a href="#" class="forgot-password">비밀번호 찾기</a>
                 </div>
 

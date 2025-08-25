@@ -8,6 +8,6 @@
 </head>
 <body>
 	여기는 인덱스
-	<jsp:forward page="WEB-INF/views/main.jsp"/>
+	<jsp:forward page="WEB-INF/views/semipj.jsp"/>
 </body>
 </html>
